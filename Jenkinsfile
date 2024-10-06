@@ -34,5 +34,12 @@ pipeline {
                 sh "sudo docker push ${env.REPO_NAME}:${env.GIT_COMMIT}"
             }
         }
+
+        stage('Trigger Pipeline Deploy') {
+            steps {
+                // Trigger Pipeline B and pass the commit ID as a parameter
+                build job: 'PipelineB', parameters: [string(name: 'COMMIT_ID', value: env.GIT_COMMIT_ID)]
+            }
+        }
     }
 }

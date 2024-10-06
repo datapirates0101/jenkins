@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    environment {
+        IMAGE_NAME = 'flask-app'
+        REPO_NAME = 'likhith08/python-app'
+    }
+    parameters {
+        string(name: 'COMMIT_ID', defaultValue: '', description: 'Git Commit ID from Pipeline A')
+    }
+    
+    stages {
+        
+        stage('Use Commit ID') {
+            steps {
+                sh "sudo docker run ${env.IMAGE_NAME} -d -p 5000:5000 ${env.REPO_NAME}:${env.params.COMMIT_ID} "
+            }
+        }
+    }
+}
