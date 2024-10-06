@@ -28,13 +28,13 @@ pipeline {
 
         stage('Create docker image') {
             steps {
-                sh "docker build -t likhith08/python-app:${env.GIT_COMMIT} . "
+                sh "sudo docker build -t likhith08/python-app:${env.GIT_COMMIT} . "
             }
         }
 
         stage('Push docker image') {
             steps{
-                sh "docker push likhith08/python-app"
+                sh "sudo docker push likhith08/python-app"
             }
         }
     }
