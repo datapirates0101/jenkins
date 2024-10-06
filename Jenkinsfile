@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = flask-app
-        REPO_NAME = likhith08/python-app
+        IMAGE_NAME = 'flask-app'
+        REPO_NAME = 'likhith08/python-app'
     }
     options {
         // This disables the default SCM checkout
@@ -10,10 +10,12 @@ pipeline {
     }
     stages {
         stage('Docker Login') {
-            withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'DOCKER_TOKEN', usernameVariable: 'DOCKER_USER')]) {
-                // Log in using the token as the password
-                sh "echo \$DOCKER_TOKEN | docker login -u \$DOCKER_USER --password-stdin"
-                sh "echo Login to docker successful"
+            steps{
+                    withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'DOCKER_TOKEN', usernameVariable: 'DOCKER_USER')]) {
+                    // Log in using the token as the password
+                    sh "echo \$DOCKER_TOKEN | docker login -u \$DOCKER_USER --password-stdin"
+                    sh "echo Login to docker successful"
+                }
             }
         }
         // stage('Checkout') {
