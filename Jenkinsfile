@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                     python3 -m venv venv
                     /var/lib/jenkins/workspace/todo-app/venv/bin/python3 -m pip install -r requirements.txt
-                    /var/lib/jenkins/workspace/todo-app/venv/bin/python3 /var/lib/jenkins/workspace/todo-app/app.py
+                    nohup /var/lib/jenkins/workspace/todo-app/venv/bin/python3 /var/lib/jenkins/workspace/todo-app/app.py &
                 '''
             }
         }
