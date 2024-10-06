@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/var/lib/jenkins/workspace/todo-app
+ExecStart=/var/lib/jenkins/workspace/todo-app/venv/bin/python3 /var/lib/jenkins/workspace/todo-app/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
