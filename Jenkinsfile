@@ -38,7 +38,7 @@ pipeline {
         stage('Trigger Pipeline Deploy') {
             steps {
                 // Trigger Pipeline B and pass the commit ID as a parameter
-                build job: 'PipelineB', parameters: [string(name: 'COMMIT_ID', value: env.GIT_COMMIT_ID)]
+                build job: 'todo-app-deploy', parameters: [string(name: 'COMMIT_ID', value: env.GIT_COMMIT_ID)]
             }
         }
     }
