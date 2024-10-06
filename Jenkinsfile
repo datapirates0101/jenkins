@@ -23,16 +23,16 @@ pipeline {
             }
         }
 
-        // stage('Create docker image') {
-        //     steps {
-        //         sh "sudo docker build -t likhith08/python-app:${env.GIT_COMMIT} . "
-        //     }
-        // }
+        stage('Create docker image') {
+            steps {
+                sh "sudo docker build -t ${env.REPO_NAME}:${env.GIT_COMMIT} . "
+            }
+        }
 
-        // stage('Push docker image') {
-        //     steps{
-        //         sh "sudo docker push likhith08/python-app:${env.GIT_COMMIT}"
-        //     }
-        // }
+        stage('Push docker image') {
+            steps{
+                sh "sudo docker push ${env.REPO_NAME}:${env.GIT_COMMIT}"
+            }
+        }
     }
 }
