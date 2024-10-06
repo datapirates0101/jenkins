@@ -19,19 +19,20 @@ pipeline {
         //         }
         //     }
         // }
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/kodekloudhub/jenkins-project.git', branch: 'main'
+                sh "ls -ltr"
+            }
+        }
+
         stage('Debug') {
             steps {
                 script {
-                    echo "Current Git Commit: ${GIT_COMMIT}"
+                    echo "Current Git Commit: ${env.GIT_COMMIT}"
                 }
             }
         }
-        // stage('Checkout') {
-        //     steps {
-        //         git url: 'https://github.com/kodekloudhub/jenkins-project.git', branch: 'main'
-        //         sh "ls -ltr"
-        //     }
-        // }
 
         // stage('Create docker image') {
         //     steps {
