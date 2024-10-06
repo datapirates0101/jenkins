@@ -12,7 +12,7 @@ pipeline {
         
         stage('Use Commit ID') {
             steps {
-                sh "sudo docker run ${env.IMAGE_NAME} -d -p 5000:5000 ${env.REPO_NAME}:${env.params.COMMIT_ID} "
+                sh "sudo docker run ${env.IMAGE_NAME} -d -p 5000:5000 ${env.REPO_NAME}:${env.COMMIT_ID} "
             }
         }
     }
