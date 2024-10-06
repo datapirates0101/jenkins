@@ -19,23 +19,30 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Checkout') {
+        stage('Debug') {
             steps {
-                git url: 'https://github.com/kodekloudhub/jenkins-project.git', branch: 'main'
-                sh "ls -ltr"
+                script {
+                    echo "Current Git Commit: ${env.GIT_COMMIT}"
+                }
             }
         }
+        // stage('Checkout') {
+        //     steps {
+        //         git url: 'https://github.com/kodekloudhub/jenkins-project.git', branch: 'main'
+        //         sh "ls -ltr"
+        //     }
+        // }
 
-        stage('Create docker image') {
-            steps {
-                sh "sudo docker build -t likhith08/python-app:${env.GIT_COMMIT} . "
-            }
-        }
+        // stage('Create docker image') {
+        //     steps {
+        //         sh "sudo docker build -t likhith08/python-app:${env.GIT_COMMIT} . "
+        //     }
+        // }
 
-        stage('Push docker image') {
-            steps{
-                sh "sudo docker push likhith08/python-app"
-            }
-        }
+        // stage('Push docker image') {
+        //     steps{
+        //         sh "sudo docker push likhith08/python-app:${env.GIT_COMMIT}"
+        //     }
+        // }
     }
 }
