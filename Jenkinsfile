@@ -22,7 +22,7 @@ pipeline {
         stage('Debug') {
             steps {
                 script {
-                    echo "Current Git Commit: ${env.GIT_COMMIT}"
+                    echo "Current Git Commit: ${GIT_COMMIT}"
                 }
             }
         }
