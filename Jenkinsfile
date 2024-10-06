@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    stages {
-        options {
+    options {
         // This disables the default SCM checkout
         skipDefaultCheckout(true)
-        }
+    }
+    stages {
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/kodekloudhub/jenkins-project.git', branch: 'main'
